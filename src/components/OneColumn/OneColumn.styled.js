@@ -26,7 +26,7 @@ export const StyledTask = styled.div`
   gap: 4px;
 `;
 
-export const StyledLabel = styled.div`
+export const StyledLabel = styled.label`
   color: ${(props) => props.theme.colors.secondFont};
 `;
 

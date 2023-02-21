@@ -6,4 +6,5 @@ export const StyledApp = styled.div`
   align-items: center;
   background-color: ${(props) => props.theme.colors.main};
   min-height: 100vh;
+  padding-top: 20px;
 `;

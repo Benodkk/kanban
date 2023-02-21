@@ -17,7 +17,7 @@ const OneColumn = ({ column, setVisible, setModule }) => {
 
   return (
     <StyledColumn>
-      <div>{column.name} </div>
+      <h3>{column.name}</h3>
       {column.tasks.map((task) => {
         return (
           <StyledTaskContainer>

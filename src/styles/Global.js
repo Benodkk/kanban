@@ -24,14 +24,8 @@ body{
 ol, ul {
     list-style: none outside none;
 }
-input,textarea {
+input,textarea, select, option {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #303036;
-    font-size: 1.6rem;
-    padding: 4px 2px
-}
-select, option{
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #303036;
     font-size: 1.6rem;
 }

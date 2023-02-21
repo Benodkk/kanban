@@ -4,7 +4,12 @@ import columns from "../../database/columns";
 import fields from "../../database/fields";
 import { addToList } from "../../redux";
 import uniqid from "uniqid";
-import { StyledForm, StyledInputContainer } from "./AddTask.styled";
+import {
+  StyledAddTaskSection,
+  StyledForm,
+  StyledInputContainer,
+  StyledSubmitBtn,
+} from "./AddTask.styled";
 
 const AddTask = () => {
   const dispatch = useDispatch();
@@ -49,13 +54,21 @@ const AddTask = () => {
     });
     if (errors.length === 0) {
       dispatch(addToList(id, taskState, taskInfo));
+      console.log(inputs);
+      setInputs(
+        inputs.map((input) => {
+          return { ...input, value: "" };
+        })
+      );
+      setTextareaValue("");
     } else {
       setErrorsInfo(errors);
     }
   };
 
   return (
-    <section>
+    <StyledAddTaskSection>
+      <h2>Add task</h2>
       <StyledForm onSubmit={(e) => handleSubmit(e)}>
         {inputs.map((field, index) => {
           return (
@@ -94,10 +107,9 @@ const AddTask = () => {
             })}
           </select>
         </StyledInputContainer>
-
-        <input value="Submit" type="submit" />
+        <StyledSubmitBtn value="Submit" type="submit" />
       </StyledForm>
-    </section>
+    </StyledAddTaskSection>
   );
 };
 
