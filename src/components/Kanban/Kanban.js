@@ -8,10 +8,16 @@ import OneColumn from "../OneColumn/OneColumn";
 import TaskInfo from "../TaskInfo/TaskInfo";
 
 import { StyledKanban } from "./Kanban.styled";
-
 const Kanban = () => {
   const store = useSelector((state) => state);
-  const [allColumns, setAllColumns] = useState([]);
+  const [allColumns, setAllColumns] = useState(
+    columns.map((column) => {
+      return {
+        ...column,
+        tasks: [],
+      };
+    })
+  );
   const [visible, setVisible] = useState(false);
   const [module, setModule] = useState([]);
 

@@ -1,9 +1,14 @@
 import { createStore } from "redux";
 import columns from "../database/columns";
 
-const initialState = {
-  tasks: [],
-};
+const STORAGE_KEY = "my_app_state";
+
+const savedState = localStorage.getItem(STORAGE_KEY);
+const initialState = savedState
+  ? JSON.parse(savedState)
+  : {
+      tasks: [],
+    };
 
 function addToList(id, taskState, taskInfo) {
   return {
@@ -32,8 +37,8 @@ export { addToList, nextState, deleteTask };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case "ADD_TO_LIST":
-      return {
+    case "ADD_TO_LIST": {
+      const newState1 = {
         ...state,
         tasks: [
           ...state.tasks,
@@ -44,8 +49,11 @@ function reducer(state = initialState, action) {
           },
         ],
       };
-    case "NEXT_STATE":
-      return {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newState1));
+      return newState1;
+    }
+    case "NEXT_STATE": {
+      const newState2 = {
         ...state,
         tasks: state.tasks.map((task) =>
           task.id === action.id && task.taskState.id < columns.length
@@ -61,20 +69,22 @@ function reducer(state = initialState, action) {
             : task
         ),
       };
-    case "DELETE_TASK":
-      return {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newState2));
+      return newState2;
+    }
+    case "DELETE_TASK": {
+      let newState3 = {
         ...state,
         tasks: state.tasks.filter((task) => task.id !== action.id),
       };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newState3));
+      return newState3;
+    }
     default:
       return state;
   }
 }
 
 const store = createStore(reducer);
-
-store.subscribe(() => {
-  console.log(store.getState());
-});
 
 export default store;
