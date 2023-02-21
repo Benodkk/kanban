@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import uniqid from "uniqid";
+
 import { useDispatch } from "react-redux";
+import { addToList } from "../../redux";
+
 import columns from "../../database/columns";
 import fields from "../../database/fields";
-import { addToList } from "../../redux";
-import uniqid from "uniqid";
+
+import Errors from "../Errors/Errors";
+
 import {
   StyledAddTaskSection,
   StyledForm,
@@ -17,6 +22,7 @@ const AddTask = () => {
   const [textareaValue, setTextareaValue] = useState("");
   const [columnValue, setColumnValue] = useState(columns[0].id);
   const [errorsInfo, setErrorsInfo] = useState([]);
+  const [showErrors, setShowErrors] = useState(false);
 
   const handleInputChange = (event, index) => {
     const value = event.target.value;
@@ -63,6 +69,7 @@ const AddTask = () => {
       setTextareaValue("");
     } else {
       setErrorsInfo(errors);
+      setShowErrors(true);
     }
   };
 
@@ -109,6 +116,11 @@ const AddTask = () => {
         </StyledInputContainer>
         <StyledSubmitBtn value="Submit" type="submit" />
       </StyledForm>
+      <Errors
+        errors={errorsInfo}
+        showErrors={showErrors}
+        setShowErrors={setShowErrors}
+      />
     </StyledAddTaskSection>
   );
 };

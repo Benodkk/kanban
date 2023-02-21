@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 html{
-    font-size: 7px;
+    font-size: 8px;
       @media ${devices.tablet} {
     font-size: 10px;
   }

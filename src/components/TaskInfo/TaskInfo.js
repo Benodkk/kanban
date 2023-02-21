@@ -1,5 +1,9 @@
-import IconButton from "../IconButton/IconButton";
+import React from "react";
+
 import cross from "../../database/icons/cross.png";
+
+import IconButton from "../IconButton/IconButton";
+
 import {
   StyledTaskInfoContainer,
   StyledTaskInfoo,
@@ -15,7 +19,7 @@ const TaskInfo = ({ visible, setVisible, module }) => {
           <IconButton onClick={() => setVisible(false)} src={cross} />
           {module.map((info) => {
             return (
-              <StyledTask>
+              <StyledTask key={info.label}>
                 <StyledLabel>{info.label}:</StyledLabel>
                 <div>{info.value}</div>
               </StyledTask>

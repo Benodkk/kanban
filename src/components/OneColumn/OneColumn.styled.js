@@ -10,6 +10,17 @@ export const StyledColumn = styled.div`
   background-color: ${(props) => props.theme.colors.second};
 `;
 
+export const StyledNoTaskInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: ${(props) => props.theme.colors.main};
+`;
+
 export const StyledTaskContainer = styled.div`
   display: flex;
   flex-direction: column;

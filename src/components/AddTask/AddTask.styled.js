@@ -1,20 +1,27 @@
 import styled from "styled-components";
+import { devices } from "../../styles/deviceWidth";
 
 export const StyledAddTaskSection = styled.section`
   display: flex;
   flex-direction: column;
-  width: 1200px;
+  position: relative;
+  width: 100%;
   padding: 20px;
   border-radius: 20px;
-  margin-top: 20px;
   background-color: ${(props) => props.theme.colors.second};
-  gap: 20px;
+  gap: 10px;
+  margin-top: 20px;
+  @media ${devices.desktop} {
+    width: 1200px;
+    gap: 20px;
+  }
 `;
 
 export const StyledForm = styled.form`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   input {
     height: 30px;
   }
@@ -28,6 +35,12 @@ export const StyledForm = styled.form`
   select {
     background-color: #fff;
   }
+  @media ${devices.desktop} {
+    display: grid;
+    row-gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+  }
 `;
 
 export const StyledInputContainer = styled.div`
@@ -38,7 +51,7 @@ export const StyledInputContainer = styled.div`
 `;
 
 export const StyledSubmitBtn = styled.input`
-  justify-self: flex-end;
+  align-self: center;
   width: 120px;
   grid-column: 1/6;
   cursor: pointer;
@@ -47,5 +60,8 @@ export const StyledSubmitBtn = styled.input`
   &:hover {
     background-color: ${(props) => props.theme.colors.font};
     transform: translateY(3px);
+  }
+  @media ${devices.desktop} {
+    justify-self: flex-end;
   }
 `;

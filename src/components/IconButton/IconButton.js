@@ -1,3 +1,5 @@
+import React from "react";
+
 import { StyledIconButton, StyledIconImage } from "./IconButton.styled";
 
 const IconButton = ({ src, onClick }) => {

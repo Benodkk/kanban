@@ -45,23 +45,27 @@ function reducer(state = initialState, action) {
         ],
       };
     case "NEXT_STATE":
-      const updatedTasks = state.tasks.map((task) =>
-        task.id === action.id && task.taskState.id < columns.length
-          ? {
-              ...task,
-              taskState:
-                columns[
-                  columns.findIndex(
-                    (column) => column.id === task.taskState.id
-                  ) + 1
-                ],
-            }
-          : task
-      );
-      return { ...state, tasks: updatedTasks };
+      return {
+        ...state,
+        tasks: state.tasks.map((task) =>
+          task.id === action.id && task.taskState.id < columns.length
+            ? {
+                ...task,
+                taskState:
+                  columns[
+                    columns.findIndex(
+                      (column) => column.id === task.taskState.id
+                    ) + 1
+                  ],
+              }
+            : task
+        ),
+      };
     case "DELETE_TASK":
-      const filtredTasks = state.tasks.filter((task) => task.id !== action.id);
-      return { ...state, tasks: filtredTasks };
+      return {
+        ...state,
+        tasks: state.tasks.filter((task) => task.id !== action.id),
+      };
     default:
       return state;
   }

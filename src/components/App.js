@@ -1,6 +1,9 @@
+import React from "react";
+
 import AddTask from "./AddTask/AddTask";
-import { StyledApp } from "./App.styled";
 import Kanban from "./Kanban/Kanban";
+
+import { StyledApp } from "./App.styled";
 
 const App = () => {
   return (

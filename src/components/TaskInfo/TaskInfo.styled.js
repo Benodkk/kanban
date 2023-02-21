@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledTaskInfoContainer = styled.section`
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -12,10 +12,10 @@ export const StyledTaskInfoContainer = styled.section`
   visibility: ${({ visible }) => (visible ? "visible" : "hidden")};
   opacity: ${({ visible }) => (visible ? 1 : 0)};
   z-index: 1;
-  transition: 0.4s;
+  transition: 0.5s;
   &::before {
     content: " ";
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0;
